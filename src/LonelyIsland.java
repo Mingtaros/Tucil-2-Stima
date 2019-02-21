@@ -29,10 +29,12 @@ public class LonelyIsland {
         boolean skt = false;
         for (int i = 0; i < bridges; i++){
             if (listOfBridge.get(i).getFirst() == firstvert){
-                DFS(bridges, listOfBridge.get(i).getSecond(), listOfBridge, passed, stuck);
-                skt = true;
-                //backtrack, hilangkan elemen terakhir
-                passed.remove(passed.size()-1);
+                if(!isPassed(listOfBridge.get(i).getSecond(), passed)){
+                    DFS(bridges, listOfBridge.get(i).getSecond(), listOfBridge, passed, stuck);
+                    skt = true;
+                    //backtrack, hilangkan elemen terakhir
+                    passed.remove(passed.size()-1);
+                }
             }
         }
         if (skt == false){//tidak ada yang jembatan ke pulau lain
@@ -46,6 +48,19 @@ public class LonelyIsland {
                 }
             }
         }
+    }
+
+    public static boolean isPassed(int vert, List<Integer> li){
+        boolean sem = false;
+        int i = 0;
+        while ((i < li.size()) && (!sem)){
+            if (vert == li.get(i)){
+                sem = true;
+            } else {
+                i += 1;
+            }
+        }
+        return sem;
     }
     public static void main(String[] args){
         // main program

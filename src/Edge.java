@@ -1,11 +1,11 @@
 /* Tugas Kecil 2 IF2211 Strategi Algoritma "Lone Island"
 NIM / Nama  : 13517048 / Leonardo
 Nama File   : Edge.java
-Deskripsi   : Kelas Pair untuk dipakai pada LonelyIsland.java
+Deskripsi   : Kelas Edge (berupa pair of template) untuk dipakai pada LonelyIsland.java
 */
 import java.util.*;
 
-public class Edge<F,S> {
+public class Edge<F,S> { //tidak pasti memakai integer agar dapat dipakai pada proyek-proyek lain
     //Terdapat First dan Second, Edge penghubung dari vertex first ke vertex second
     private F first;
     private S second;
