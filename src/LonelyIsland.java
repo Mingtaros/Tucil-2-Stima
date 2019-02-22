@@ -1,7 +1,7 @@
 /* Tugas Kecil 2 IF2211 Strategi Algoritma "Lone Island"
 NIM / Nama  : 13517048 / Leonardo
 Nama File   : LonelyIsland.java
-Deskripsi   : Main program untuk mencari pulau dead-end dari suatu graf berarah. Memanggil Edge.java untuk class pair
+Deskripsi   : Main program untuk mencari pulau dead-end dari suatu graf berarah. Memanggil Edge.java untuk class Edge
 */
 import java.util.*;
 import java.io.*;
@@ -63,8 +63,18 @@ public class LonelyIsland {
         }
         return sem;
     }
+    
     public static void main(String[] args){
-        // main program
+        // BUKAN MAIN PROGRAM
+        new Thread (null, new Runnable() {
+            public void run() {
+                new LonelyIsland().Main();
+            }
+        }, "big_stack_thread", 1<<26).start();
+    }
+
+    public static void Main(){
+        // implementasi main program
         System.out.print("Input file name(end with .txt) : ");
         Scanner scan = new Scanner(System.in);
         String namafile = scan.nextLine();
