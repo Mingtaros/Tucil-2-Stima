@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 
 public class LonelyIsland {
-    public static void Solve(int vertex, int bridges, int firstvert, List<Edge<Integer, Integer>> listOfBridge){ 
+    public static void Solve(int vertex, int bridges, int firstvert, List<Edge<Integer>> listOfBridge){ 
         List<Integer> passed = new ArrayList<Integer>();
         boolean stuck[] = new boolean[vertex+1]; //memakai boolean agar hasil unik
         for (int i = 0; i <= vertex; i++){ // inisialisasi
@@ -23,7 +23,7 @@ public class LonelyIsland {
         }
     }
 
-    public static void DFS(int bridges, int firstvert, List<Edge<Integer, Integer>> listOfBridge, List<Integer> passed, boolean stuck[]){
+    public static void DFS(int bridges, int firstvert, List<Edge<Integer>> listOfBridge, List<Integer> passed, boolean stuck[]){
         // penyelesaian dengan algoritma Decrease and Conquer - Depth First Search (DFS)
         passed.add(firstvert);
         boolean skt = false;
@@ -34,7 +34,7 @@ public class LonelyIsland {
                     skt = true;
                     //backtrack, hilangkan elemen terakhir
                     passed.remove(passed.size()-1);
-                }
+                } // apabila pulau sudah dilewati, pulau tidak dapat dilewati kembali
             }
         }
         if (skt == false){//tidak ada yang jembatan ke pulau lain
@@ -51,6 +51,7 @@ public class LonelyIsland {
     }
 
     public static boolean isPassed(int vert, List<Integer> li){
+        //fungsi pencarian dengan implementasi boolean
         boolean sem = false;
         int i = 0;
         while ((i < li.size()) && (!sem)){
@@ -68,7 +69,7 @@ public class LonelyIsland {
         Scanner scan = new Scanner(System.in);
         String namafile = scan.nextLine();
         try {
-            List<Edge<Integer,Integer>> listOfBridge = new ArrayList<Edge<Integer,Integer>>();
+            List<Edge<Integer>> listOfBridge = new ArrayList<Edge<Integer>>();
             File input = new File(namafile); //deklarasi file agar data di dalamnya dapat diambil
             Scanner scaninp = new Scanner(input); //mengambil input dari file
 
@@ -80,7 +81,7 @@ public class LonelyIsland {
                 int fst = scaninp.nextInt();
                 int scd = scaninp.nextInt();
 
-                Edge<Integer, Integer> temp = new Edge<Integer, Integer>(fst, scd);
+                Edge<Integer> temp = new Edge<Integer>(fst, scd);
                 listOfBridge.add(temp);
             }
             long start = System.nanoTime();

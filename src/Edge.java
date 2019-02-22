@@ -5,30 +5,30 @@ Deskripsi   : Kelas Edge (berupa pair of template) untuk dipakai pada LonelyIsla
 */
 import java.util.*;
 
-public class Edge<F,S> { //tidak pasti memakai integer agar dapat dipakai pada proyek-proyek lain
+public class Edge<T> { //tidak pasti memakai integer agar dapat dipakai pada proyek-proyek lain
     //Terdapat First dan Second, Edge penghubung dari vertex first ke vertex second
-    private F first;
-    private S second;
+    private T first;
+    private T second;
     
     //ctor
-    public Edge(F _first, S _second){
+    public Edge(T _first, T _second){
         this.first = _first;
         this.second = _second;
     }
     //getter
-    public F getFirst(){
+    public T getFirst(){
         return this.first;
     }
 
-    public S getSecond(){
+    public T getSecond(){
         return this.second;
     }
     //setter
-    public void setFirst(F _first){
+    public void setFirst(T _first){
         this.first = _first;
     }
 
-    public void setSecond(S _second){
+    public void setSecond(T _second){
         this.second = _second;
     }
 }
